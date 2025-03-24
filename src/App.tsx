@@ -6,16 +6,21 @@ import Main from "./pages/main";
 import LoginForm from "./pages/Login";
 import SignupForm from "./pages/SignUp";
 import { Flip, ToastContainer } from "react-toastify";
+import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFoundPage";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<LoginForm />} path="/login" />
         <Route element={<SignupForm />} path="/register" />
+        <Route element={<Contact />} path="/contact" />
         <Route element={<Main />} path="/" />
         <Route element={<ProtectedRoutes />}>
           <Route element={<Profile />} path="/profile" />
         </Route>
+
+        <Route path="*" element={<NotFound/>} />
       </Routes>
       <ToastContainer
         position="bottom-right"

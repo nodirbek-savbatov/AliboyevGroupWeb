@@ -28,11 +28,11 @@ const products = [
   },
 ];
 
-const Products = () => {
+const BestSellers = () => {
   return (
    <div className="mt-10">
   <FullScreenWrapper>
-    <h1 className="text-3xl text-center font-semibold text-gray-800">New Arrival</h1>
+    <h1 className="text-3xl text-center font-semibold text-gray-800">Best Seller</h1>
   </FullScreenWrapper>
   <FullScreenWrapper>
       <p className="text-center mt-5">There are many variations of passages of lorem ipsum available</p>
@@ -57,4 +57,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default BestSellers;
