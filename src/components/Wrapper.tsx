@@ -6,7 +6,7 @@ type FullScreenWrapperProps = {
 
 const FullScreenWrapper: React.FC<FullScreenWrapperProps> = ({ children }) => {
   return (
-    <div className="w-screen flex items-center justify-center">
+    <div className="w-100% flex items-center justify-center">
       {children}
     </div>
   );

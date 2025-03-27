@@ -8,6 +8,7 @@ import SignupForm from "./pages/SignUp";
 import { Flip, ToastContainer } from "react-toastify";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFoundPage";
+import Stepper from "./pages/about";
 function App() {
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ function App() {
         <Route element={<LoginForm />} path="/login" />
         <Route element={<SignupForm />} path="/register" />
         <Route element={<Contact />} path="/contact" />
+        <Route element={<Stepper />} path="/about" />
         <Route element={<Main />} path="/" />
         <Route element={<ProtectedRoutes />}>
           <Route element={<Profile />} path="/profile" />

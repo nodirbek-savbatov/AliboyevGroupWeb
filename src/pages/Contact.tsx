@@ -4,6 +4,7 @@ import Footer from "../modules/Footer/Footer";
 import Header from "../modules/Header/Header";
 import GiftCarts from "../components/GiftCarts";
 import FullScreenWrapper from "../components/Wrapper";
+import { FormEvent, useState } from "react";
 
 interface GiftCartsProps {
   icon: React.ReactNode;
@@ -14,6 +15,24 @@ interface GiftCartsProps {
 }
 
 const Contact = () => {
+    const [phone, setPhone] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [name, setName] = useState<string>("");
+    const [text, setText] = useState<string>("");
+
+    const handleSubmit = () => {
+        const data = {
+            phone,
+            email,
+            name,
+            text
+        }
+    alert(JSON.stringify(data));
+        setPhone("");
+        setEmail("");
+        setName("");
+        setText("");
+    };
   const giftData: GiftCartsProps[] = [
     {
       icon: <FaMapMarked />,
@@ -59,6 +78,58 @@ const Contact = () => {
           ></iframe>
         </div>
       </FullScreenWrapper>
+    <FullScreenWrapper>
+        <h1 className="text-center text-3xl mt-10">Contact us</h1>
+    </FullScreenWrapper>
+    <FullScreenWrapper>
+    <form onSubmit={handleSubmit} className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 max-w-xl mx-auto p-6 bg-white rounded-xl">
+        <div className="flex flex-col space-y-2 w-full">
+            <label htmlFor="name" className="font-medium text-gray-700">Name</label>
+            <input 
+                type="text" 
+                id="name"
+                onChange={(e) => setName(e.target.value)}
+                aria-label="Name"
+                className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-400"
+            />
+        </div>
+        <div className="flex flex-col space-y-2 w-full">
+            <label htmlFor="email" className="font-medium text-gray-700">Email</label>
+            <input 
+                type="email" 
+                id="email"
+                onChange={(e) => setEmail(e.target.value)}
+                aria-label="Email"
+                className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-400"
+            />
+        </div>
+        <div className="flex flex-col space-y-2 w-full md:col-span-2">
+            <label htmlFor="phone" className="font-medium text-gray-700">Phone</label>
+            <input 
+                type="tel" 
+                id="phone" 
+                onChange={(e) => setPhone(e.target.value)}
+                aria-label="Phone"
+                className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-400"
+            />
+        </div>
+        <div className="flex flex-col space-y-2 w-full md:col-span-2">
+            <label htmlFor="text" className="font-medium text-gray-700">Message</label>
+            <textarea  
+                id="text" 
+                rows={4}
+                onChange={(e) => setText(e.target.value)}
+                aria-label="Message"
+                className="w-full p-3 resize-none border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-400"
+            />
+        </div>
+        <button type="submit"
+            className="w-full md:w-auto bg-blue-500 text-white font-medium rounded-lg p-3 transition-all hover:bg-blue-600 hover:shadow-lg md:col-span-2">
+            Send Message
+        </button>
+    </form>
+</FullScreenWrapper>
+
 
       <Footer />
     </div>
