@@ -4,52 +4,67 @@ import { FaPhoneAlt } from "react-icons/fa";
 const TopBar = () => {
   const [currency, setCurrency] = useState("USD");
   const [language, setLanguage] = useState("UZ");
+  const [activeDropdown, setActiveDropdown] = useState(null);
+
+  const toggleDropdown = (dropdown: any) => {
+    setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
+  };
 
   return (
     <div className="w-full bg-gradient-to-r from-blue-700 to-purple-700 text-white py-2 text-sm">
-      <div className="wrapper container mx-auto flex justify-between items-center px-6 py-4">
-        {/* Ishonch telefoni */}
+      <div className="max-w-7
+      xl mx-auto flex justify-between items-center px-4 py-3">
         <div className="flex items-center gap-2">
           <FaPhoneAlt className="text-lg text-white opacity-80" />
           <span>
-            Ishonch telefoni:{" "}
+            Phone Number:{" "}
             <a href="tel:+998933590705" className="hover:underline font-semibold">
               +(998) 93 359-07-05
             </a>
           </span>
         </div>
 
-        {/* O'rta matn */}
         <div className="hidden md:flex text-white font-semibold">
-          Wellcome To <span className="ml-1 text-yellow-300">Aliboyev Group</span>
+          Welcome To <span className="ml-1 text-yellow-300">Aliboyev Group</span>
         </div>
 
-        {/* Currency va Language tanlash */}
-        <div className="flex items-center gap-6">
-          {/* Currency */}
+        <div className="flex items-center gap-4">
+          {/* Currency Dropdown */}
           <div className="relative">
-            <select
-              value={currency}
-              onChange={(e) => setCurrency(e.target.value)}
-              className="bg-transparent text-white font-semibold outline-none cursor-pointer border-b border-transparent hover:border-white transition-all"
+            <button
+              onClick={() => toggleDropdown("currency")}
+              className="text-white font-semibold border-b border-transparent hover:border-white transition-all focus:outline-none"
             >
-              <option value="USD" className="text-black">USD 🇺🇸</option>
-              <option value="EUR" className="text-black">EUR 🇪🇺</option>
-              <option value="UZS" className="text-black">UZS 🇺🇿</option>
-            </select>
+              {currency}
+            </button>
+            {activeDropdown === "currency" && (
+              <div className="absolute right-0 mt-2 w-28 bg-white rounded-lg shadow-lg z-10">
+                <ul className="py-2 text-gray-700">
+                  <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={() => { setCurrency("USD"); setActiveDropdown(null); }}>USD 🇺🇸</li>
+                  <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={() => { setCurrency("EUR"); setActiveDropdown(null); }}>EUR 🇪🇺</li>
+                  <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={() => { setCurrency("UZS"); setActiveDropdown(null); }}>UZS 🇺🇿</li>
+                </ul>
+              </div>
+            )}
           </div>
 
-          {/* Language */}
+          {/* Language Dropdown */}
           <div className="relative">
-            <select
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)}
-              className="bg-transparent text-white font-semibold outline-none cursor-pointer border-b border-transparent hover:border-white transition-all"
+            <button
+              onClick={() => toggleDropdown("language")}
+              className="text-white font-semibold border-b border-transparent hover:border-white transition-all focus:outline-none"
             >
-              <option value="UZ" className="text-black">UZ 🇺🇿</option>
-              <option value="EN" className="text-black">EN 🇬🇧</option>
-              <option value="RU" className="text-black">RU 🇷🇺</option>
-            </select>
+              {language}
+            </button>
+            {activeDropdown === "language" && (
+              <div className="absolute right-0 mt-2 w-28 bg-white rounded-lg shadow-lg z-10">
+                <ul className="py-2 text-gray-700">
+                  <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={() => { setLanguage("UZ"); setActiveDropdown(null); }}>UZ 🇺🇿</li>
+                  <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={() => { setLanguage("EN"); setActiveDropdown(null); }}>EN 🇬🇧</li>
+                  <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={() => { setLanguage("RU"); setActiveDropdown(null); }}>RU 🇷🇺</li>
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>
